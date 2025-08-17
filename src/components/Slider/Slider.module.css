@@ -1,0 +1,8 @@
+.sliderContainer {
+  max-width: 1920px;
+  margin: auto;
+}
+
+.sliderContainer picture img {
+  width: 100%;
+}

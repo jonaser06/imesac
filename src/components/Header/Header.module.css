@@ -1,0 +1,101 @@
+.holderHeaders {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: #e6e6e6;
+}
+
+.holderHeaderDesktop {
+  box-sizing: border-box;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  max-width: 1280px;
+  min-height: 111px;
+  margin: auto;
+  align-items: center;
+  padding: 12px 20px 0px 20px
+}
+
+.holderHeaderBrand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 0;
+  pointer-events: none;
+
+  width: 100%;
+  height: 80px;
+  margin: -15px 0 6px;
+}
+
+.brandLogo {
+  /* display: flex; */
+}
+
+.holderHeaderCompany {
+  min-height: 18px;
+
+  margin-right: auto;
+
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  box-sizing: border-box;
+  color: #666;
+}
+
+
+.holderHeaderMenu nav ul {
+  display: flex;
+  box-sizing: border-box;
+  color: #4D4D4D;
+  font-size: 15px;
+  font-weight: 400;
+  justify-content: center;
+}
+
+.holderHeaderMenu nav ul li {
+  position: relative;
+  margin-right: 26px;
+}
+
+.holderHeaderMenu nav ul li a {
+  display: block;
+  padding-bottom: 5px;
+}
+
+.contentMenu {
+  top: 29px;
+  position: absolute;
+  background: #f2f2f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.holderHeaderMenu nav ul li:hover .contentMenu {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.option {
+  padding: 10px;
+  white-space: nowrap
+}
+
+.option:hover {
+  background: #4d4d4d;
+  color: #f2f2f2;
+}
+
+.contentMenu ul li {}
+
+.holderHeaderMenu {}
+
+.holderHeaderMobile {}
