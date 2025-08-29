@@ -7,7 +7,6 @@ import {
   Search,
   Cable,
   Lightbulb,
-  FileText,
   ChevronDown,
   ChevronUp,
 } from "lucide-react";

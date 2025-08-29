@@ -1,9 +1,9 @@
 import ProductView from "@/components/ProductView/ProductView";
 
 interface ProductPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{
+    producto: string;
+  }>;
 }
 
 interface RelatedProduct {
@@ -15,7 +15,8 @@ interface RelatedProduct {
   brand: string;
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: ProductPageProps) {
+  await params; // In a real implementation, you would use the producto parameter
   const product = {
     id: 1,
     name: "UPS 5KVA APC Smart-UPS SRT Online - Modelo SRV5KI",

@@ -13,6 +13,26 @@ import {
   Star,
 } from "lucide-react";
 
+interface ProductImage {
+  id: number;
+  url: string;
+  alt: string;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  brand: string;
+  sku: string;
+  price: number;
+  originalPrice: number;
+  discount: number;
+  shortDescription: string;
+  fullDescription: string;
+  technicalSheet: string;
+  images: ProductImage[];
+}
+
 interface RelatedProduct {
   id: number;
   name: string;
@@ -22,10 +42,18 @@ interface RelatedProduct {
   brand: string;
 }
 
+interface Comment {
+  id: number;
+  author: string;
+  rating: number;
+  date: string;
+  comment: string;
+}
+
 interface ProductViewProps {
-  product: any;
+  product: Product;
   relatedProducts: RelatedProduct[];
-  comments: any[];
+  comments: Comment[];
 }
 
 export default function ProductView({

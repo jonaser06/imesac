@@ -30,11 +30,12 @@ export default function Mision() {
                     <Target className="w-8 h-8 text-blue-600" />
                   </div>
                   <blockquote className="text-xl text-gray-800 font-medium leading-relaxed">
-                    "Cooperar con el éxito de nuestros clientes, desarrollando
-                    sus proyectos con calidad, seguridad, y dentro del plazo y
-                    presupuesto previstos. Impulsando el desarrollo personal y
-                    profesional de nuestra gente, formando líderes cuyos logros
-                    trasciendan en la empresa y en la sociedad."
+                    &ldquo;Cooperar con el éxito de nuestros clientes,
+                    desarrollando sus proyectos con calidad, seguridad, y dentro
+                    del plazo y presupuesto previstos. Impulsando el desarrollo
+                    personal y profesional de nuestra gente, formando líderes
+                    cuyos logros trasciendan en la empresa y en la
+                    sociedad.&rdquo;
                   </blockquote>
                 </div>
               </div>
