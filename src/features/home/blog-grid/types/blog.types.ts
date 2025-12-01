@@ -1,11 +1,4 @@
-import {
-  Cable,
-  Lightbulb,
-  Settings,
-  ShieldCheck,
-  Snowflake,
-  Zap,
-} from "lucide-react";
+import { Zap } from "lucide-react";
 
 export interface BlogPost {
   id: number;

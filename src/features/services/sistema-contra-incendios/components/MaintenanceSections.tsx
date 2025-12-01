@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, CheckCircle, FileText } from "lucide-react";
+import { Check } from "lucide-react";
 import { MaintenanceSection } from "../types/mantenimiento-detail.types";
 
 interface MaintenanceSectionsProps {

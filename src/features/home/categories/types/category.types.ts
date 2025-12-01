@@ -1,12 +1,4 @@
-import {
-  ShieldCheck,
-  Zap,
-  Settings,
-  Snowflake,
-  Search,
-  Cable,
-  Lightbulb,
-} from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export interface Category {
   id: number;
