@@ -44,7 +44,7 @@
   height: 100px;
   background: white;
   border-radius: 8px;
-  border: 2px solid #dbb145;
+  border: 2px solid #2a2a72;
   padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

@@ -48,15 +48,14 @@
   height: 100px;
   background: white;
   border-radius: 8px;
-  /* box-shadow: 0 2px 8px rgba(255, 213, 0, 0.8); */
-  border: 2px solid #dbb145;
+  border: 2px solid #01a7c2;
   padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .partnerSlide:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(1, 167, 194, 0.3);
 }
 
 @keyframes scrollLeft {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,14 +7,30 @@ import Image from "next/image";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleSubmenu = (menu: string) => {
     setActiveSubmenu(activeSubmenu === menu ? null : menu);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header>
+    <header
+      className={`${style.headerWrapper} ${isSticky ? style.sticky : ""}`}
+    >
       <div className={style.holderHeaders}>
         <div className={style.holderHeaderMobile}>
           <div className={style.mobileHeader}>

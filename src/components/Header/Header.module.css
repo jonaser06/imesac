@@ -1,3 +1,124 @@
+.headerWrapper {
+  transition: all 0.3s ease;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease;
+}
+
+.sticky .holderHeaders {
+  background: #ffffff;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.sticky .holderHeaderDesktop {
+  min-height: 80px;
+  padding: 8px 20px;
+}
+
+.sticky .holderHeaderBrand {
+  height: 60px;
+  margin: 0;
+}
+
+.sticky .brandLogo img {
+  width: 140px !important;
+  height: auto !important;
+}
+
+.sticky .holderHeaderCompany {
+  font-size: 11px;
+  color: #000000;
+}
+
+.sticky .holderHeaderCompany a {
+  color: #000000;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.sticky .holderHeaderCompany a:hover {
+  color: #01a7c2;
+}
+
+.sticky .holderHeaderMenu nav ul li a {
+  color: #000000;
+  font-weight: 600;
+}
+
+.sticky .holderHeaderMenu nav ul li a:hover {
+  color: #01a7c2;
+}
+
+.sticky .contentMenu {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sticky .option a {
+  color: #000000;
+  font-weight: 600;
+}
+
+.sticky .option:hover {
+  background: #eaebed;
+}
+
+.sticky .option:hover a {
+  color: #01a7c2;
+}
+
+.sticky .submenu {
+  background: #ffffff;
+}
+
+.sticky .submenu .option a {
+  color: #000000;
+  font-weight: 600;
+}
+
+.sticky .submenu .option:hover {
+  background: #eaebed;
+}
+
+.sticky .submenu .option:hover a {
+  color: #01a7c2;
+}
+
+@media (max-width: 768px) {
+  .sticky .mobileHeader {
+    padding: 0.8rem 1rem;
+  }
+
+  .sticky .mobileLogo img {
+    width: 100px !important;
+    height: auto !important;
+  }
+
+  .sticky .hamburger span {
+    background: #000000;
+  }
+
+  .sticky .mobileNav > ul > li > a {
+    color: #000000;
+    font-weight: 600;
+  }
+}
+
 .holderHeaders {
   margin: 0;
   padding: 0;
