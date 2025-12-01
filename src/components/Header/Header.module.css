@@ -16,7 +16,7 @@
   min-height: 111px;
   margin: auto;
   align-items: center;
-  padding: 12px 20px 0px 20px
+  padding: 12px 20px 0px 20px;
 }
 
 .holderHeaderBrand {
@@ -48,11 +48,10 @@
   color: #666;
 }
 
-
 .holderHeaderMenu nav ul {
   display: flex;
   box-sizing: border-box;
-  color: #4D4D4D;
+  color: #4d4d4d;
   font-size: 15px;
   font-weight: 400;
   justify-content: center;
@@ -74,28 +73,224 @@
   background: #f2f2f2;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-height: 0;
-  overflow: hidden;
+  overflow: visible;
   transition: max-height 0.3s ease, opacity 0.3s ease;
   opacity: 0;
+  z-index: 100;
 }
 
 .holderHeaderMenu nav ul li:hover .contentMenu {
-  max-height: 500px;
+  max-height: 1000px;
   opacity: 1;
 }
 
 .option {
   padding: 10px;
-  white-space: nowrap
+  white-space: nowrap;
+  position: relative;
 }
 
 .option:hover {
   background: #4d4d4d;
+}
+
+.option:hover a {
   color: #f2f2f2;
 }
 
-.contentMenu ul li {}
+.hasSubmenu {
+  position: relative;
+}
 
-.holderHeaderMenu {}
+.hasSubmenu > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
-.holderHeaderMobile {}
+.hasSubmenu > span > a {
+  flex: 1;
+}
+
+.arrowIcon {
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.submenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: #f2f2f2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 280px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.3s, opacity 0.3s ease;
+  z-index: 101;
+}
+
+.hasSubmenu:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s 0s, opacity 0.3s ease;
+}
+
+.submenu .option {
+  padding: 10px;
+}
+
+.submenu .option a {
+  color: #4d4d4d;
+}
+
+.submenu .option:hover {
+  background: #4d4d4d;
+}
+
+.submenu .option:hover a {
+  color: #f2f2f2;
+}
+
+/* Mobile Menu Styles */
+.holderHeaderMobile {
+  display: none;
+}
+
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.mobileLogo {
+  z-index: 1001;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #4d4d4d;
+  transition: all 0.3s ease;
+}
+
+.mobileNav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+  padding-top: 80px;
+}
+
+.mobileNav.open {
+  left: 0;
+}
+
+.mobileNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNav > ul > li {
+  border-bottom: 1px solid #e6e6e6;
+  position: relative;
+}
+
+.mobileNav > ul > li > a {
+  display: block;
+  padding: 15px 20px;
+  color: #4d4d4d;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #4d4d4d;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileSubmenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f8f8f8;
+}
+
+.mobileSubmenu.open {
+  max-height: 1000px;
+}
+
+.mobileSubmenu li {
+  position: relative;
+}
+
+.mobileSubmenu li a {
+  display: block;
+  padding: 12px 20px 12px 40px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.mobileSubmenu .mobileSubmenu li a {
+  padding-left: 60px;
+  font-size: 13px;
+  color: #777;
+}
+
+.mobileSubmenu li:hover {
+  background: #e6e6e6;
+}
+
+@media (max-width: 768px) {
+  .holderHeaderDesktop {
+    display: none;
+  }
+
+  .holderHeaderMobile {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .holderHeaderMobile {
+    display: none;
+  }
+}

@@ -1,0 +1,34 @@
+"use client";
+
+import { ServiceBenefit } from "../types/service-detail.types";
+
+interface ServiceBenefitsProps {
+  benefits: ServiceBenefit[];
+}
+
+export function ServiceBenefits({ benefits }: ServiceBenefitsProps) {
+  return (
+    <section className="py-16 bg-[#EAEBED]">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Beneficios de nuestros tableros eléctricos
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg p-6 text-center border-l-4 border-[#01A7C2] hover:shadow-md transition-shadow"
+            >
+              <h3 className="text-lg font-semibold text-[#007090]">
+                {benefit.title}
+              </h3>
+              {benefit.description && (
+                <p className="text-gray-700 mt-2">{benefit.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
