@@ -33,9 +33,16 @@ export default function WhatsAppFloat() {
   ];
 
   const openWhatsApp = (phone: string, name: string) => {
-    const message = encodeURIComponent(
-      `Hola ${name}, me contacto desde la página web de IMESAC. Me gustaría obtener más información sobre sus productos.`
-    );
+    const messages = [
+      `Hola ${name}, buenos días. Visité la página web de IMESAC y me interesa conocer más sobre sus servicios profesionales.`,
+      `Hola ${name}, me gustaría solicitar una cotización para un proyecto. ¿Podemos coordinar una reunión?`,
+      `Hola ${name}, ¿cómo estás? Te escribo porque encontré IMESAC en línea y necesito asesoría técnica. ¿Me podrías ayudar?`,
+      `Hola ${name}, requiero información urgente sobre los servicios de IMESAC para un proyecto en curso. ¿Estás disponible?`,
+      `Hola ${name}, estoy evaluando proveedores para un proyecto eléctrico/industrial. ¿Podrías compartirme información sobre lo que ofrecen en IMESAC?`,
+    ];
+
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    const message = encodeURIComponent(randomMessage);
     const url = `https://wa.me/${phone}?text=${message}`;
     window.open(url, "_blank");
     setIsOpen(false);

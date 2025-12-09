@@ -27,28 +27,20 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/GRUPOIMESAC"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-black hover:text-[#d09706] transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
-                className="text-black hover:text-[#d09706] transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+                href="https://www.linkedin.com/company/instalaciones-mecanicas-electricas-sur-sac/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-black hover:text-[#d09706] transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-black hover:text-[#d09706] transition-colors"
-              >
-                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>
