@@ -1,18 +1,21 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Image } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ImageSliderProps {
   images?: string[];
   placeholderCount?: number;
+  autoPlayInterval?: number;
 }
 
 export function ImageSlider({
   images,
   placeholderCount = 3,
+  autoPlayInterval = 1500,
 }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Si no hay imágenes, usar placeholders
   const slides =
@@ -34,6 +37,17 @@ export function ImageSlider({
     setCurrentIndex(index);
   };
 
+  // Autoplay effect
+  useEffect(() => {
+    if (isPaused || slides.length <= 1) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, autoPlayInterval);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isPaused, autoPlayInterval, slides.length]);
+
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
@@ -41,7 +55,11 @@ export function ImageSlider({
           Galería de Imágenes
         </h2>
 
-        <div className="relative w-full h-[400px] md:h-[500px] bg-gradient-to-br from-[#EAEBED] to-[#A3BAC3] rounded-lg shadow-lg overflow-hidden group">
+        <div
+          className="relative w-full h-[400px] md:h-[500px] bg-gradient-to-br from-[#EAEBED] to-[#A3BAC3] rounded-lg shadow-lg overflow-hidden group"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Slides */}
           {slides.map((slide, index) => (
             <div
