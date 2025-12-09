@@ -207,12 +207,12 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Link href="/blog" onClick={() => setMenuOpen(false)}>
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Link href="/contacto" onClick={() => setMenuOpen(false)}>
                   Contacto
                 </Link>
               </li>
@@ -314,10 +314,10 @@ const Header = () => {
                   <Link href="/tienda">Tienda</Link>
                 </li>
                 <li>
-                  <Link href="/">Blog</Link>
+                  <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/">Contacto</Link>
+                  <Link href="/contacto">Contacto</Link>
                 </li>
               </ul>
             </nav>

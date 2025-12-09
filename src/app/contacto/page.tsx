@@ -13,6 +13,7 @@ import {
   MessageCircle,
   Zap,
   AlertCircle,
+  CheckCircle2,
 } from "lucide-react";
 
 const ContactPage = () => {
@@ -30,13 +31,14 @@ const ContactPage = () => {
   >("idle");
 
   const servicios = [
-    "Subestaciones Eléctricas",
-    "Sistemas HVAC",
-    "Mantenimiento Eléctrico",
-    "Iluminación LED",
-    "Sistemas de Puesta a Tierra",
-    "Certificaciones",
-    "Consultoría",
+    "Licencias Municipales",
+    "Mantenimiento de Subestaciones Eléctricas",
+    "Instalaciones Eléctricas",
+    "Sistema Contra Incendios DACI / ACI",
+    "Mantenimiento de Agua Contra Incendios",
+    "Aire Acondicionado y Climatización",
+    "Mantenimiento y Rebobinado de Motores Eléctricos",
+    "Estructuras Metálicas",
     "Otro",
   ];
 
@@ -55,44 +57,71 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus("idle");
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({
-        nombre: "",
-        empresa: "",
-        email: "",
-        telefono: "",
-        servicio: "",
-        mensaje: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      // Reset success message after 5 seconds
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          nombre: "",
+          empresa: "",
+          email: "",
+          telefono: "",
+          servicio: "",
+          mensaje: "",
+        });
+
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      } else {
+        setSubmitStatus("error");
+        console.error("Error al enviar:", data);
+
+        // Reset error message after 5 seconds
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      }
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      setSubmitStatus("error");
+
+      // Reset error message after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000);
-    }, 2000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isFormValid = formData.nombre && formData.email && formData.mensaje;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Zap className="w-8 h-8 text-blue-300" />
-              <h1 className="text-4xl md:text-5xl font-bold">Contáctanos</h1>
-            </div>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Estamos listos para ayudarte con tu próximo proyecto eléctrico.
-              Contáctanos para una consulta gratuita y cotización personalizada.
-            </p>
+      <section className="relative bg-gradient-to-br from-[#006989] to-[#007090] text-white py-16">
+        {/* Image Placeholder - Replace src with your image path */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="w-full h-full bg-[url('/gb_slate_hero_background.jpg')] bg-cover bg-center bg-no-repeat" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center mb-4">
+            <CheckCircle2 className="w-12 h-12 text-[#FFFF] mr-4" />
+            <h1 className="text-4xl md:text-5xl font-bold">Contáctanos</h1>
           </div>
+          <p className="text-xl text-white max-w-4xl leading-relaxed">
+            Estamos listos para ayudarte con tu próximo proyecto eléctrico.
+            Contáctanos para una consulta gratuita y cotización personalizada.
+          </p>
         </div>
       </section>
+      {/* Hero Section */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-3 gap-12">
@@ -106,14 +135,15 @@ const ContactPage = () => {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                  <div className="bg-orange-100 p-3 rounded-lg">
+                    <MapPin className="w-6 h-6 text-[#d09706]" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Dirección</h3>
                     <p className="text-gray-600">
-                      Av. Industrial 1234, Piso 5<br />
-                      Lima 15, Perú
+                      Sector 6, Grupo 6A, Mz. B, Lote 15
+                      <br />
+                      Villa El Salvador
                     </p>
                   </div>
                 </div>
@@ -125,9 +155,9 @@ const ContactPage = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Teléfonos</h3>
                     <p className="text-gray-600">
-                      +51 1 234-5678
+                      +51 990 458 254
                       <br />
-                      +51 987-654-321
+                      +51 993 546 564
                     </p>
                   </div>
                 </div>
@@ -139,9 +169,11 @@ const ContactPage = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <p className="text-gray-600">
-                      info@imesac.com.pe
+                      proyectos@imesac.com
                       <br />
-                      ventas@imesac.com.pe
+                      lcasas@imesac.com
+                      <br />
+                      amendoza@imesac.com
                     </p>
                   </div>
                 </div>
@@ -160,24 +192,6 @@ const ContactPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Emergency Contact */}
-            <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <AlertCircle className="w-6 h-6 text-red-600" />
-                <h3 className="text-lg font-bold text-red-900">
-                  Emergencias 24/7
-                </h3>
-              </div>
-              <p className="text-red-800 mb-3">
-                Para emergencias eléctricas fuera del horario comercial:
-              </p>
-              <p className="text-xl font-bold text-red-900">+51 999-888-777</p>
-              <p className="text-sm text-red-700 mt-2">
-                Servicio de respuesta rápida para clientes con contratos de
-                mantenimiento
-              </p>
             </div>
 
             {/* Services Quick Links */}
@@ -223,6 +237,23 @@ const ContactPage = () => {
                 </div>
               )}
 
+              {submitStatus === "error" && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                    <div>
+                      <h4 className="font-semibold text-red-900">
+                        Error al enviar el mensaje
+                      </h4>
+                      <p className="text-red-800 text-sm">
+                        Por favor, intenta nuevamente o contáctanos directamente
+                        por teléfono o email.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -241,7 +272,7 @@ const ContactPage = () => {
                         value={formData.nombre}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                         placeholder="Tu nombre completo"
                       />
                     </div>
@@ -262,7 +293,7 @@ const ContactPage = () => {
                         name="empresa"
                         value={formData.empresa}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                         placeholder="Nombre de tu empresa"
                       />
                     </div>
@@ -286,7 +317,7 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                         placeholder="tu@email.com"
                       />
                     </div>
@@ -307,7 +338,7 @@ const ContactPage = () => {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                         placeholder="+51 999 888 777"
                       />
                     </div>
@@ -326,7 +357,7 @@ const ContactPage = () => {
                     name="servicio"
                     value={formData.servicio}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   >
                     <option value="">Selecciona un servicio</option>
                     {servicios.map((servicio, index) => (
@@ -353,7 +384,7 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none"
                       placeholder="Describe tu proyecto o consulta..."
                     />
                   </div>
@@ -362,7 +393,7 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={!isFormValid || isSubmitting}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-[#d09706] text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -399,27 +430,27 @@ const ContactPage = () => {
               </p>
             </div>
 
-            {/* Placeholder for map - In a real implementation, you would integrate with Google Maps or similar */}
-            <div className="bg-gray-200 h-96 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 font-medium">Mapa Interactivo</p>
-                <p className="text-gray-500 text-sm">
-                  Av. Industrial 1234, Piso 5, Lima 15
-                </p>
-                <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                  Ver en Google Maps
-                </button>
-              </div>
+            {/* Google Maps */}
+            <div className="relative h-96 w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.1234567890123!2d-76.945264!3d-12.220823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDEzJzE0LjkiUyA3NsKwNTYnNDMuMCJX!5e0!3m2!1ses!2spe!4v1234567890123!5m2!1ses!2spe"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación IMESAC"
+              ></iframe>
             </div>
           </div>
         </div>
 
         {/* Additional Info */}
         <div className="mt-12 grid md:grid-cols-3 gap-8">
-          <div className="bg-blue-50 rounded-xl p-6 text-center">
-            <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Zap className="w-8 h-8 text-blue-600" />
+          <div className="bg-orange-50 rounded-xl p-6 text-center">
+            <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Zap className="w-8 h-8 text-[#d09706]" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">
               Respuesta Rápida
@@ -434,10 +465,10 @@ const ContactPage = () => {
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">
-              Cotización Gratuita
+              Asesoría Profesional
             </h3>
             <p className="text-gray-600">
-              Evaluación y presupuesto sin costo para tu proyecto
+              Consultoría técnica especializada con ingenieros expertos
             </p>
           </div>
 
@@ -459,4 +490,3 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-

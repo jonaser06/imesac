@@ -9,6 +9,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -57,52 +58,60 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-black mb-4">Servicios</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/licencias-municipales"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Defensa Civil
-                </a>
+                  Licencias Municipales
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/mantenimiento-subestaciones-electricas"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Subestaciones Eléctricas
-                </a>
+                  Mantenimiento de Subestaciones Eléctricas
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/instalaciones-electricas"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Mantenimiento
-                </a>
+                  Instalaciones Eléctricas
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/sistema-contra-incendios"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Climatización
-                </a>
+                  Sistema Contra Incendios DACI / ACI
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/aire-acondicionado-climatizacion"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Puesta a Tierra
-                </a>
+                  Aire Acondicionado y Climatización
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/servicios/mantenimiento-rebobinado-motores"
                   className="text-black hover:text-[#d09706] transition-colors"
                 >
-                  Iluminación LED
-                </a>
+                  Mantenimiento y Rebobinado de Motores Eléctricos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servicios/estructuras-metalicas"
+                  className="text-black hover:text-[#d09706] transition-colors"
+                >
+                  Estructuras Metálicas
+                </Link>
               </li>
             </ul>
           </div>

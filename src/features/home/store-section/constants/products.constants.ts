@@ -3,26 +3,29 @@ import { Product } from "../types/product.types";
 export const FEATURED_PRODUCTS: Product[] = [
   {
     id: 1,
-    name: "Sistemas UPS",
+    name: "Relé de Protección REX610",
     description:
-      "Respaldo de energía confiable para equipos críticos. Desde 1KVA hasta 10KVA.",
-    image: "https://placehold.co/200x300",
+      "Protección y control todo en uno para aplicaciones de servicios públicos e industriales básicos.",
+    image: "/products/rele-rex610.png",
     link: "#",
+    price: "0.00",
   },
   {
     id: 2,
-    name: "Paneles LED",
+    name: "Relé de Protección REX615",
     description:
-      "Iluminación eficiente y duradera. Paneles LED de alta calidad para uso comercial.",
-    image: "https://placehold.co/200x300",
+      "Diseñado para la protección, control, medición y supervisión de sistemas de energía.",
+    image: "/products/rele-rex615.png",
     link: "#",
+    price: "0.00",
   },
   {
     id: 3,
-    name: "Transformadores",
+    name: "Relé de Protección REX630",
     description:
-      "Transformadores de distribución y potencia para aplicaciones industriales.",
-    image: "https://placehold.co/200x300",
+      "Relé de gestión de alimentadores para aplicaciones de servicios públicos e industriales exigentes.",
+    image: "/products/rele-rex630.png",
     link: "#",
+    price: "0.00",
   },
 ];

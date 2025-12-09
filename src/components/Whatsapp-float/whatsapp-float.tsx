@@ -18,37 +18,23 @@ export default function WhatsAppFloat() {
   const contacts: Contact[] = [
     {
       id: 1,
-      name: "Ventas - Carlos",
-      phone: "51975431858",
-      role: "Asesor de Ventas",
-      avatar: "https://placehold.jp/60x60.png",
+      name: "Luis Casas",
+      phone: "51990458254",
+      role: "Jefe de proyectos",
+      avatar: "/image.png",
     },
     {
       id: 2,
-      name: "Soporte Técnico",
-      phone: "51975431859",
-      role: "Soporte Técnico",
-      avatar: "https://placehold.jp/60x60.png",
-    },
-    {
-      id: 3,
-      name: "Cotizaciones",
-      phone: "51975431860",
-      role: "Área de Cotizaciones",
-      avatar: "https://placehold.jp/60x60.png",
-    },
-    {
-      id: 4,
-      name: "Gerencia",
-      phone: "51975431861",
-      role: "Gerencia General",
-      avatar: "https://placehold.jp/60x60.png",
+      name: "Abel Mendoza",
+      phone: "51993546564",
+      role: "Ejecutivo de Ventas",
+      avatar: "/image.png",
     },
   ];
 
   const openWhatsApp = (phone: string, name: string) => {
     const message = encodeURIComponent(
-      `Hola ${name}, me contacto desde la página web de GESELEC. Me gustaría obtener más información sobre sus productos.`
+      `Hola ${name}, me contacto desde la página web de IMESAC. Me gustaría obtener más información sobre sus productos.`
     );
     const url = `https://wa.me/${phone}?text=${message}`;
     window.open(url, "_blank");

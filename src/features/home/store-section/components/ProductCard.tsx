@@ -19,6 +19,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         {product.name}
       </h3>
       <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+      <div className="text-xl font-bold text-gray-900 mb-4">
+        S/. {product.price}
+      </div>
       <div className="flex items-center text-[#d09706] text-sm font-medium">
         <span>Ver modelos disponibles</span>
         <ArrowRight className="w-4 h-4 ml-1" />
