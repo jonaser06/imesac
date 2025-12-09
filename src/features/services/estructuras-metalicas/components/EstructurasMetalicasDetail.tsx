@@ -4,6 +4,7 @@ import { ServiceHero } from "./ServiceHero";
 import { EstructuraServices } from "./EstructuraServices";
 import { EstructuraBenefits } from "./EstructuraBenefits";
 import { EstructuraContact } from "./EstructuraContact";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 import { estructurasData } from "../constants/estructuras-data.constants";
 
 export function EstructurasMetalicasDetail() {
@@ -23,6 +24,7 @@ export function EstructurasMetalicasDetail() {
         </div>
       </section>
 
+      <ImageSlider images={["/em-01.jpeg", "/em-02.png", "/em-03.png"]} />
       <EstructuraServices services={services} />
       <EstructuraBenefits benefits={benefits} />
       <EstructuraContact contact={contact} />

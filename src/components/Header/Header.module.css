@@ -195,14 +195,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-height: 0;
   overflow: visible;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
   opacity: 0;
+  visibility: hidden;
   z-index: 100;
 }
 
 .holderHeaderMenu nav ul li:hover .contentMenu {
   max-height: 1000px;
   opacity: 1;
+  visibility: visible;
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0s 0s;
 }
 
 .option {
@@ -247,16 +250,19 @@
   background: #f2f2f2;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 280px;
+  max-height: 0;
+  overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 0.3s, opacity 0.3s ease;
+  transition: max-height 0.3s ease, visibility 0s 0.3s, opacity 0.3s ease;
   z-index: 101;
 }
 
 .hasSubmenu:hover .submenu {
+  max-height: 500px;
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s 0s, opacity 0.3s ease;
+  transition: max-height 0.3s ease, visibility 0s 0s, opacity 0.3s ease;
 }
 
 .submenu .option {

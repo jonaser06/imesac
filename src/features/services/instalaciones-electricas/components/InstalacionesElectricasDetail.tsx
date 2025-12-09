@@ -6,6 +6,7 @@ import { ServiceSpecializations } from "./ServiceSpecializations";
 import { ServiceBenefits } from "./ServiceBenefits";
 import { ServiceContact } from "./ServiceContact";
 import { instalacionesElectricasData } from "../constants/service-data.constants";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 
 export function InstalacionesElectricasDetail() {
   const {
@@ -30,7 +31,16 @@ export function InstalacionesElectricasDetail() {
           </p>
         </div>
       </section>
-
+      <ImageSlider
+        images={[
+          "/tableros.png",
+          "/tablero-02.png",
+          "/spat-01.png",
+          "/spat-02.png",
+          "/iluminacion-01.png",
+          "/iluminacion-02.png",
+        ]}
+      />
       <ServiceFeatures features={features} />
       <ServiceSpecializations specializations={specializations} />
       <ServiceBenefits benefits={benefits} />

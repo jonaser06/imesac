@@ -4,6 +4,7 @@ import { ServiceHero } from "./ServiceHero";
 import { ServiceFeatures } from "./ServiceFeatures";
 import { ServiceBenefits } from "./ServiceBenefits";
 import { ServiceContact } from "./ServiceContact";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 import { sistemaContraIncendiosData } from "../constants/daci-data.constants";
 
 export function SistemaContraIncendiosDetail() {
@@ -22,7 +23,7 @@ export function SistemaContraIncendiosDetail() {
           </p>
         </div>
       </section>
-
+      <ImageSlider images={["/dasi-1.png", "/daci-02.png", "/daci-03.png"]} />
       <ServiceFeatures features={features} />
       <ServiceBenefits benefits={benefits} />
       <ServiceContact contact={contact} />

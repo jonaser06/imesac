@@ -4,6 +4,7 @@ import { ServiceHero } from "./ServiceHero";
 import { MotorServices } from "./MotorServices";
 import { MotorBenefits } from "./MotorBenefits";
 import { MotorContact } from "./MotorContact";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 import { motoresData } from "../constants/motores-data.constants";
 
 export function MotoresElectricosDetail() {
@@ -23,6 +24,9 @@ export function MotoresElectricosDetail() {
         </div>
       </section>
 
+      <ImageSlider
+        images={["/motores.png", "/motores-02.jpeg", "/motores-03.jpeg"]}
+      />
       <MotorServices services={services} />
       <MotorBenefits benefits={benefits} />
       <MotorContact contact={contact} />

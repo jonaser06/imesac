@@ -7,6 +7,7 @@ import { WhyImportant } from "./WhyImportant";
 import { ServiceAreas } from "./ServiceAreas";
 import { MantenimientoContact } from "./MantenimientoContact";
 import { mantenimientoAguaData } from "../constants/mantenimiento-agua-data.constants";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 
 export function MantenimientoAguaDetail() {
   const {
@@ -34,6 +35,8 @@ export function MantenimientoAguaDetail() {
           </p>
         </div>
       </section>
+
+      <ImageSlider images={["/aci-1.png", "/aci-02.jpeg", "/aci-03.jpeg"]} />
 
       <MaintenanceSections sections={maintenanceSections} />
       <InformeITSE items={informeItems} />

@@ -4,6 +4,7 @@ import { ServiceHero } from "./ServiceHero";
 import { ServiceFeatures } from "./ServiceFeatures";
 import { ServiceBenefits } from "./ServiceBenefits";
 import { ServiceContact } from "./ServiceContact";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 import { mantenimientoSubestacionesData } from "../constants/service-data.constants";
 
 export function MantenimientoSubestacionesDetail() {
@@ -23,6 +24,13 @@ export function MantenimientoSubestacionesDetail() {
         </div>
       </section>
 
+      <ImageSlider
+        images={[
+          "/subestaciones.png",
+          "/subestacion-02.jpg",
+          "/subestacion-03.png",
+        ]}
+      />
       <ServiceFeatures features={features} />
       <ServiceBenefits benefits={benefits} />
       <ServiceContact contact={contact} />

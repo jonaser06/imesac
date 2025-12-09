@@ -4,6 +4,7 @@ import { ServiceHero } from "./ServiceHero";
 import { HVACServices } from "./HVACServices";
 import { HVACBenefits } from "./HVACBenefits";
 import { HVACContact } from "./HVACContact";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 import { hvacData } from "../constants/hvac-data.constants";
 
 export function AireAcondicionadoDetail() {
@@ -22,6 +23,7 @@ export function AireAcondicionadoDetail() {
           </p>
         </div>
       </section>
+      <ImageSlider images={["/hvac-01.png", "/hvac-02.png", "/hvac-03.png"]} />
 
       <HVACServices services={services} />
       <HVACBenefits benefits={benefits} />
