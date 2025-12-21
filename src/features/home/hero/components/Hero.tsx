@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <div className={styles.sliderContainer}>
       <picture>
-        <img src="/mantenimiento_industrial.jpeg" alt="Slider" />
+        <img src="/nuevaportada.png" alt="Slider" />
       </picture>
     </div>
   );
