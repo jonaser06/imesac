@@ -12,7 +12,7 @@ interface ImageSliderProps {
 export function ImageSlider({
   images,
   placeholderCount = 3,
-  autoPlayInterval = 1500,
+  autoPlayInterval = 2500,
 }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
