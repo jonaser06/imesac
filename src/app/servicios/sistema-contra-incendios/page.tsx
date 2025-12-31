@@ -1,13 +1,5 @@
-import {
-  SistemaContraIncendiosDetail,
-  MantenimientoAguaDetail,
-} from "@/features/services/sistema-contra-incendios";
+import { SistemaContraIncendiosDetail } from "@/features/services/sistema-contra-incendios";
 
 export default function SistemaContraIncendiosPage() {
-  return (
-    <>
-      <SistemaContraIncendiosDetail />
-      <MantenimientoAguaDetail />
-    </>
-  );
+  return <SistemaContraIncendiosDetail />;
 }

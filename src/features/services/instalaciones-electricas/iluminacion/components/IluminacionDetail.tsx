@@ -5,6 +5,7 @@ import { ServiceFeatures } from "./ServiceFeatures";
 import { ServiceBenefits } from "./ServiceBenefits";
 import { ServiceContact } from "./ServiceContact";
 import { iluminacionData } from "../constants/service-data.constants";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 
 export function IluminacionDetail() {
   const { title, subtitle, description, features, benefits, contact } =
@@ -22,7 +23,14 @@ export function IluminacionDetail() {
           </p>
         </div>
       </section>
-
+      <ImageSlider
+        images={[
+          "/iluminacion-01.png",
+          "/iluminacion-02.png",
+          "/images/iluminacion.png",
+          "/images/iluminacion-2.png",
+        ]}
+      />
       <ServiceFeatures features={features} />
       <ServiceBenefits benefits={benefits} />
       <ServiceContact contact={contact} />

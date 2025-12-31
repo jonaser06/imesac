@@ -23,7 +23,14 @@ export function AireAcondicionadoDetail() {
           </p>
         </div>
       </section>
-      <ImageSlider images={["/hvac-01.png", "/hvac-02.png", "/hvac-03.png"]} />
+      <ImageSlider
+        images={[
+          "/hvac-01.png",
+          "/hvac-02.png",
+          "/hvac-03.png",
+          "/images/hvac.png",
+        ]}
+      />
 
       <HVACServices services={services} />
       <HVACBenefits benefits={benefits} />

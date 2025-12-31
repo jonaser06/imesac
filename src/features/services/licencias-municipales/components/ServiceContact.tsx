@@ -63,22 +63,6 @@ export const ServiceContact = ({ contact }: ServiceContactProps) => {
               </div>
             </div>
           </div>
-
-          {/* Website */}
-          <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-            <span className="text-gray-700 font-medium block mb-2">
-              Visítanos en:
-            </span>
-            <a
-              href={`https://${contact.website}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-[#007090] hover:text-[#006989] font-semibold text-lg transition-colors"
-            >
-              <Globe className="w-5 h-5 mr-2" />
-              {contact.website}
-            </a>
-          </div>
         </div>
       </div>
     </section>

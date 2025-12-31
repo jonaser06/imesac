@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import style from "./Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { Download } from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,42 +56,9 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/nosotros" onClick={() => setMenuOpen(false)}>
-                  Nosotros
+                <Link href="/empresa" onClick={() => setMenuOpen(false)}>
+                  Empresa
                 </Link>
-                <button
-                  className={style.toggleBtn}
-                  onClick={() => toggleSubmenu("nosotros")}
-                >
-                  {activeSubmenu === "nosotros" ? "−" : "+"}
-                </button>
-                <ul
-                  className={`${style.mobileSubmenu} ${
-                    activeSubmenu === "nosotros" ? style.open : ""
-                  }`}
-                >
-                  <li>
-                    <Link href="/nosotros" onClick={() => setMenuOpen(false)}>
-                      ¿Quienes somos?
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/nosotros/mision"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Misión
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/nosotros/vision"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Visión
-                    </Link>
-                  </li>
-                </ul>
               </li>
               <li>
                 <Link href="/servicios" onClick={() => setMenuOpen(false)}>
@@ -124,12 +92,12 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/servicios/instalaciones-electricas"
-                      onClick={() => setMenuOpen(false)}
+                    <a
+                      onClick={() => toggleSubmenu("instalaciones")}
+                      style={{ cursor: "pointer" }}
                     >
                       Instalaciones Eléctricas
-                    </Link>
+                    </a>
                     <button
                       className={style.toggleBtn}
                       onClick={() => toggleSubmenu("instalaciones")}
@@ -168,12 +136,40 @@ const Header = () => {
                     </ul>
                   </li>
                   <li>
-                    <Link
-                      href="/servicios/sistema-contra-incendios"
-                      onClick={() => setMenuOpen(false)}
+                    <a
+                      onClick={() => toggleSubmenu("incendios")}
+                      style={{ cursor: "pointer" }}
                     >
-                      Sistema Contra Incendios DACI / ACI
-                    </Link>
+                      Sistema Contra Incendios
+                    </a>
+                    <button
+                      className={style.toggleBtn}
+                      onClick={() => toggleSubmenu("incendios")}
+                    >
+                      {activeSubmenu === "incendios" ? "−" : "+"}
+                    </button>
+                    <ul
+                      className={`${style.mobileSubmenu} ${
+                        activeSubmenu === "incendios" ? style.open : ""
+                      }`}
+                    >
+                      <li>
+                        <Link
+                          href="/servicios/sistema-contra-incendios"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          Sistema de Detección y Alarma (DACI)
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/servicios/mantenimiento-agua-contra-incendios"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          Mantenimiento de Sistema de Agua (ACI)
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     <Link
@@ -217,6 +213,15 @@ const Header = () => {
                 </Link>
               </li>
             </ul>
+            <a
+              href="/brochure.pdf"
+              download
+              className={style.brochureBtnMobile}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Download />
+              Descargar Brochure
+            </a>
           </nav>
         </div>
         <div className={style.holderHeaderDesktop}>
@@ -237,18 +242,7 @@ const Header = () => {
                   <Link href="/">Inicio</Link>
                 </li>
                 <li>
-                  <Link href="/nosotros">Nosotros</Link>
-                  <div className={style.contentMenu}>
-                    <div className={style.option}>
-                      <Link href="/nosotros">¿Quienes somos?</Link>
-                    </div>
-                    <div className={style.option}>
-                      <Link href="/nosotros/mision">Misión</Link>
-                    </div>
-                    <div className={style.option}>
-                      <Link href="/nosotros/vision">Visión</Link>
-                    </div>
-                  </div>
+                  <Link href="/empresa">Empresa</Link>
                 </li>
                 <li>
                   <Link href="/servicios">Servicios</Link>
@@ -265,9 +259,9 @@ const Header = () => {
                     </div>
                     <div className={`${style.option} ${style.hasSubmenu}`}>
                       <span>
-                        <Link href="/servicios/instalaciones-electricas">
+                        <a style={{ cursor: "default" }}>
                           Instalaciones Eléctricas
-                        </Link>
+                        </a>
                         <span className={style.arrowIcon}>›</span>
                       </span>
                       <div className={style.submenu}>
@@ -288,10 +282,25 @@ const Header = () => {
                         </div>
                       </div>
                     </div>
-                    <div className={style.option}>
-                      <Link href="/servicios/sistema-contra-incendios">
-                        Sistema Contra Incendios DACI / ACI
-                      </Link>
+                    <div className={`${style.option} ${style.hasSubmenu}`}>
+                      <span>
+                        <a style={{ cursor: "default" }}>
+                          Sistema Contra Incendios
+                        </a>
+                        <span className={style.arrowIcon}>›</span>
+                      </span>
+                      <div className={style.submenu}>
+                        <div className={style.option}>
+                          <Link href="/servicios/sistema-contra-incendios">
+                            Sistema de Detección y Alarma (DACI)
+                          </Link>
+                        </div>
+                        <div className={style.option}>
+                          <Link href="/servicios/mantenimiento-agua-contra-incendios">
+                            Mantenimiento de Sistema de Agua (ACI)
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                     <div className={style.option}>
                       <Link href="/servicios/aire-acondicionado-climatizacion">
@@ -318,6 +327,16 @@ const Header = () => {
                 </li>
                 <li>
                   <Link href="/contacto">Contacto</Link>
+                </li>
+                <li>
+                  <a
+                    href="/brochure.pdf"
+                    download
+                    className={style.brochureBtn}
+                  >
+                    <Download />
+                    Brochure
+                  </a>
                 </li>
               </ul>
             </nav>

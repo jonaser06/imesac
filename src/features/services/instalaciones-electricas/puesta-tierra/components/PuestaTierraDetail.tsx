@@ -5,6 +5,7 @@ import { ServiceFeatures } from "./ServiceFeatures";
 import { ServiceBenefits } from "./ServiceBenefits";
 import { ServiceContact } from "./ServiceContact";
 import { puestaTierraData } from "../constants/service-data.constants";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 
 export function PuestaTierraDetail() {
   const { title, subtitle, description, features, benefits, contact } =
@@ -22,7 +23,9 @@ export function PuestaTierraDetail() {
           </p>
         </div>
       </section>
-
+      <ImageSlider
+        images={["/spat-01.png", "/images/spat.png", "/images/spat-2.png"]}
+      />
       <ServiceFeatures features={features} />
       <ServiceBenefits benefits={benefits} />
       <ServiceContact contact={contact} />

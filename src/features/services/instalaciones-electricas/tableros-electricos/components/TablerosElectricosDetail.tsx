@@ -7,6 +7,7 @@ import { ServiceBenefits } from "./ServiceBenefits";
 import { WhyChooseUs } from "./WhyChooseUs";
 import { ServiceContact } from "./ServiceContact";
 import { tablerosElectricosData } from "../constants/service-data.constants";
+import { ImageSlider } from "@/features/shared/components/ImageSlider";
 
 export function TablerosElectricosDetail() {
   const {
@@ -32,7 +33,9 @@ export function TablerosElectricosDetail() {
           </p>
         </div>
       </section>
-
+      <ImageSlider
+        images={["/tableros.png", "/tablero-02.png", "/images/tableros.png"]}
+      />
       <TablerosTypes tablerosTypes={tablerosTypes} />
       <ServiceIncludes services={services} />
       <ServiceBenefits benefits={benefits} />
