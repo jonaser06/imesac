@@ -7,12 +7,27 @@ import { Download } from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({});
   const [isSticky, setIsSticky] = useState(false);
+  const [desktopMenuBlocked, setDesktopMenuBlocked] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    if (menuOpen) {
+      setOpenSubmenus({});
+    }
+  };
+
   const toggleSubmenu = (menu: string) => {
-    setActiveSubmenu(activeSubmenu === menu ? null : menu);
+    setOpenSubmenus((prev) => ({
+      ...prev,
+      [menu]: !prev[menu],
+    }));
+  };
+
+  const closeAllMenus = () => {
+    setMenuOpen(false);
+    setOpenSubmenus({});
   };
 
   useEffect(() => {
@@ -51,34 +66,38 @@ const Header = () => {
           <nav className={`${style.mobileNav} ${menuOpen ? style.open : ""}`}>
             <ul>
               <li>
-                <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Link href="/" onClick={closeAllMenus}>
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/empresa" onClick={() => setMenuOpen(false)}>
+                <Link href="/empresa" onClick={closeAllMenus}>
                   Empresa
                 </Link>
               </li>
-              <li>
-                <Link href="/servicios" onClick={() => setMenuOpen(false)}>
-                  Servicios
-                </Link>
+              <li className={style.hasDropdown}>
                 <button
-                  className={style.toggleBtn}
+                  className={style.menuButton}
                   onClick={() => toggleSubmenu("servicios")}
                 >
-                  {activeSubmenu === "servicios" ? "−" : "+"}
+                  <span>Servicios</span>
+                  <span
+                    className={`${style.menuIcon} ${
+                      openSubmenus.servicios ? style.rotate : ""
+                    }`}
+                  >
+                    ▼
+                  </span>
                 </button>
                 <ul
-                  className={`${style.mobileSubmenu} ${
-                    activeSubmenu === "servicios" ? style.open : ""
+                  className={`${style.dropdownMenu} ${
+                    openSubmenus.servicios ? style.show : ""
                   }`}
                 >
                   <li>
                     <Link
                       href="/servicios/licencias-municipales"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={closeAllMenus}
                     >
                       Licencias Municipales
                     </Link>
@@ -86,33 +105,35 @@ const Header = () => {
                   <li>
                     <Link
                       href="/servicios/mantenimiento-subestaciones-electricas"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={closeAllMenus}
                     >
                       Mantenimiento de Subestaciones Eléctricas
                     </Link>
                   </li>
-                  <li>
-                    <a
-                      onClick={() => toggleSubmenu("instalaciones")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      Instalaciones Eléctricas
-                    </a>
+
+                  <li className={style.hasDropdown}>
                     <button
-                      className={style.toggleBtn}
+                      className={style.submenuButton}
                       onClick={() => toggleSubmenu("instalaciones")}
                     >
-                      {activeSubmenu === "instalaciones" ? "−" : "+"}
+                      <span>Instalaciones Eléctricas</span>
+                      <span
+                        className={`${style.menuIcon} ${
+                          openSubmenus.instalaciones ? style.rotate : ""
+                        }`}
+                      >
+                        ▼
+                      </span>
                     </button>
                     <ul
-                      className={`${style.mobileSubmenu} ${
-                        activeSubmenu === "instalaciones" ? style.open : ""
+                      className={`${style.dropdownMenu} ${
+                        openSubmenus.instalaciones ? style.show : ""
                       }`}
                     >
                       <li>
                         <Link
                           href="/servicios/instalaciones-electricas/tableros-electricos"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           Tableros Eléctricos
                         </Link>
@@ -120,7 +141,7 @@ const Header = () => {
                       <li>
                         <Link
                           href="/servicios/instalaciones-electricas/iluminacion-industrial-comercial"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           Iluminación Industrial y Comercial
                         </Link>
@@ -128,35 +149,37 @@ const Header = () => {
                       <li>
                         <Link
                           href="/servicios/instalaciones-electricas/sistema-puesta-tierra"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           Sistema de Puesta a Tierra
                         </Link>
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <a
-                      onClick={() => toggleSubmenu("incendios")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      Sistema Contra Incendios
-                    </a>
+
+                  <li className={style.hasDropdown}>
                     <button
-                      className={style.toggleBtn}
+                      className={style.submenuButton}
                       onClick={() => toggleSubmenu("incendios")}
                     >
-                      {activeSubmenu === "incendios" ? "−" : "+"}
+                      <span>Sistema Contra Incendios</span>
+                      <span
+                        className={`${style.menuIcon} ${
+                          openSubmenus.incendios ? style.rotate : ""
+                        }`}
+                      >
+                        ▼
+                      </span>
                     </button>
                     <ul
-                      className={`${style.mobileSubmenu} ${
-                        activeSubmenu === "incendios" ? style.open : ""
+                      className={`${style.dropdownMenu} ${
+                        openSubmenus.incendios ? style.show : ""
                       }`}
                     >
                       <li>
                         <Link
                           href="/servicios/sistema-contra-incendios"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           Sistema de Detección y Alarma (DACI)
                         </Link>
@@ -164,17 +187,18 @@ const Header = () => {
                       <li>
                         <Link
                           href="/servicios/mantenimiento-agua-contra-incendios"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={closeAllMenus}
                         >
                           Mantenimiento de Sistema de Agua (ACI)
                         </Link>
                       </li>
                     </ul>
                   </li>
+
                   <li>
                     <Link
                       href="/servicios/aire-acondicionado-climatizacion"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={closeAllMenus}
                     >
                       Aire Acondicionado y Climatización
                     </Link>
@@ -182,7 +206,7 @@ const Header = () => {
                   <li>
                     <Link
                       href="/servicios/mantenimiento-rebobinado-motores"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={closeAllMenus}
                     >
                       Mantenimiento y Rebobinado de Motores Eléctricos
                     </Link>
@@ -190,7 +214,7 @@ const Header = () => {
                   <li>
                     <Link
                       href="/servicios/estructuras-metalicas"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={closeAllMenus}
                     >
                       Estructuras Metálicas
                     </Link>
@@ -198,17 +222,17 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                <Link href="/tienda" onClick={() => setMenuOpen(false)}>
+                <Link href="/tienda" onClick={closeAllMenus}>
                   Tienda
                 </Link>
               </li>
               <li>
-                <Link href="/blog" onClick={() => setMenuOpen(false)}>
+                <Link href="/blog" onClick={closeAllMenus}>
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contacto" onClick={() => setMenuOpen(false)}>
+                <Link href="/contacto" onClick={closeAllMenus}>
                   Contacto
                 </Link>
               </li>
@@ -217,7 +241,7 @@ const Header = () => {
               href="/brochure.pdf"
               download
               className={style.brochureBtnMobile}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeAllMenus}
             >
               <Download />
               Descargar Brochure
@@ -246,14 +270,24 @@ const Header = () => {
                 </li>
                 <li>
                   <Link href="/servicios">Servicios</Link>
-                  <div className={style.contentMenu}>
+                  <div
+                    className={`${style.contentMenu} ${
+                      desktopMenuBlocked ? style.blocked : ""
+                    }`}
+                  >
                     <div className={style.option}>
-                      <Link href="/servicios/licencias-municipales">
+                      <Link
+                        href="/servicios/licencias-municipales"
+                        onClick={closeAllMenus}
+                      >
                         Licencias Municipales
                       </Link>
                     </div>
                     <div className={style.option}>
-                      <Link href="/servicios/mantenimiento-subestaciones-electricas">
+                      <Link
+                        href="/servicios/mantenimiento-subestaciones-electricas"
+                        onClick={closeAllMenus}
+                      >
                         Mantenimiento de Subestaciones Eléctricas
                       </Link>
                     </div>
@@ -266,17 +300,26 @@ const Header = () => {
                       </span>
                       <div className={style.submenu}>
                         <div className={style.option}>
-                          <Link href="/servicios/instalaciones-electricas/tableros-electricos">
+                          <Link
+                            href="/servicios/instalaciones-electricas/tableros-electricos"
+                            onClick={closeAllMenus}
+                          >
                             Tableros Eléctricos
                           </Link>
                         </div>
                         <div className={style.option}>
-                          <Link href="/servicios/instalaciones-electricas/iluminacion-industrial-comercial">
+                          <Link
+                            href="/servicios/instalaciones-electricas/iluminacion-industrial-comercial"
+                            onClick={closeAllMenus}
+                          >
                             Iluminación Industrial y Comercial
                           </Link>
                         </div>
                         <div className={style.option}>
-                          <Link href="/servicios/instalaciones-electricas/sistema-puesta-tierra">
+                          <Link
+                            href="/servicios/instalaciones-electricas/sistema-puesta-tierra"
+                            onClick={closeAllMenus}
+                          >
                             Sistema de Puesta a Tierra
                           </Link>
                         </div>
@@ -291,29 +334,44 @@ const Header = () => {
                       </span>
                       <div className={style.submenu}>
                         <div className={style.option}>
-                          <Link href="/servicios/sistema-contra-incendios">
+                          <Link
+                            href="/servicios/sistema-contra-incendios"
+                            onClick={closeAllMenus}
+                          >
                             Sistema de Detección y Alarma (DACI)
                           </Link>
                         </div>
                         <div className={style.option}>
-                          <Link href="/servicios/mantenimiento-agua-contra-incendios">
+                          <Link
+                            href="/servicios/mantenimiento-agua-contra-incendios"
+                            onClick={closeAllMenus}
+                          >
                             Mantenimiento de Sistema de Agua (ACI)
                           </Link>
                         </div>
                       </div>
                     </div>
                     <div className={style.option}>
-                      <Link href="/servicios/aire-acondicionado-climatizacion">
+                      <Link
+                        href="/servicios/aire-acondicionado-climatizacion"
+                        onClick={closeAllMenus}
+                      >
                         Aire Acondicionado y Climatización
                       </Link>
                     </div>
                     <div className={style.option}>
-                      <Link href="/servicios/mantenimiento-rebobinado-motores">
+                      <Link
+                        href="/servicios/mantenimiento-rebobinado-motores"
+                        onClick={closeAllMenus}
+                      >
                         Mantenimiento y Rebobinado de Motores Eléctricos
                       </Link>
                     </div>
                     <div className={style.option}>
-                      <Link href="/servicios/estructuras-metalicas">
+                      <Link
+                        href="/servicios/estructuras-metalicas"
+                        onClick={closeAllMenus}
+                      >
                         Estructuras Metálicas
                       </Link>
                     </div>

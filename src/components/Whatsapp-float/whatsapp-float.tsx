@@ -19,7 +19,7 @@ export default function WhatsAppFloat() {
     {
       id: 1,
       name: "Luis Casas",
-      phone: "51990458254",
+      phone: "5117519451",
       role: "Jefe de proyectos",
       avatar: "/image.png",
     },

@@ -186,6 +186,8 @@
 .holderHeaderMenu nav ul li a {
   display: block;
   padding-bottom: 5px;
+  color: #000;
+  font-weight: 500;
 }
 
 .contentMenu {
@@ -206,6 +208,21 @@
   opacity: 1;
   visibility: visible;
   transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0s 0s;
+}
+
+.contentMenu.blocked {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+.forceClose .contentMenu {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
 }
 
 .option {
@@ -347,13 +364,123 @@
   position: relative;
 }
 
-.mobileNav > ul > li > a {
+.mobileNav > ul > li > a,
+.mobileNav > ul > li > .menuLabel {
   display: block;
   padding: 15px 20px;
   color: #4d4d4d;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
+}
+
+.hasDropdown {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.menuButton,
+.submenuButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  color: #4d4d4d;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.submenuButton {
+  padding: 12px 20px 12px 40px;
+  font-size: 15px;
+  background: #f8f8f8;
+}
+
+.menuIcon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.menuIcon.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #f8f8f8;
+}
+
+.dropdownMenu.show {
+  max-height: 2000px;
+}
+
+.dropdownMenu li {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.dropdownMenu li:last-child {
+  border-bottom: none;
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 12px 20px 12px 40px;
+  color: #666;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.dropdownMenu a:hover {
+  background: #e8e8e8;
+}
+
+.dropdownMenu .dropdownMenu {
+  background: #ffffff;
+}
+
+.dropdownMenu .dropdownMenu a {
+  padding-left: 60px;
+  font-size: 14px;
+  color: #555;
+}
+
+.mobileSubmenu li > .submenuLabel {
+  display: block;
+  padding: 12px 20px 12px 40px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.submenuGroup {
+  background: #e8e8e8;
+  border-left: 3px solid #01a7c2;
+}
+
+.submenuTitle {
+  padding: 10px 20px 10px 40px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nestedLink {
+  padding-left: 50px !important;
+  font-size: 13px !important;
+  color: #555 !important;
 }
 
 .toggleBtn {

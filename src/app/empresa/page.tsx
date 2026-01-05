@@ -12,6 +12,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Empresa() {
   return (
@@ -38,33 +39,49 @@ export default function Empresa() {
           </div>
 
           <div className="p-8">
-            {/* Main Description */}
+            {/* Main Description con Imagen */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Sobre IMESAC
-              </h2>
-              <div className="prose prose-lg max-w-none text-gray-600">
-                <p className="mb-6">
-                  <strong>IMESAC</strong> (Instalaciones Mecánicas Eléctricas
-                  Sur S.A.C.) inicia sus actividades con el firme propósito de
-                  consolidar una cultura empresarial sólida y confiable.
-                  Ofrecemos al mercado servicios especializados de ingeniería
-                  eléctrica en baja y media tensión, así como proyectos
-                  integrales relacionados con el sector eléctrico y mecánico.
-                </p>
-                <p className="mb-6">
-                  Contamos con personal altamente calificado y el respaldo de
-                  ingenieros y técnicos electricistas con amplia experiencia en
-                  los sectores residencial, comercial e industrial. Nuestro
-                  equipo está comprometido con la excelencia técnica y la
-                  innovación constante.
-                </p>
-                <p>
-                  Hemos ganado el reconocimiento de nuestros clientes por la
-                  calidad excepcional de nuestros servicios, nuestros tiempos de
-                  respuesta eficientes y la eficiencia operativa que caracteriza
-                  cada uno de nuestros proyectos.
-                </p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    Sobre IMESAC
+                  </h2>
+                  <div className="prose prose-lg max-w-none text-gray-600">
+                    <p className="mb-6">
+                      <strong>IMESAC</strong> (Instalaciones Mecánicas
+                      Eléctricas Sur S.A.C.) inicia sus actividades con el firme
+                      propósito de consolidar una cultura empresarial sólida y
+                      confiable. Ofrecemos al mercado servicios especializados
+                      de ingeniería eléctrica en baja y media tensión, así como
+                      proyectos integrales relacionados con el sector eléctrico
+                      y mecánico.
+                    </p>
+                    <p className="mb-6">
+                      Contamos con personal altamente calificado y el respaldo
+                      de ingenieros y técnicos electricistas con amplia
+                      experiencia en los sectores residencial, comercial e
+                      industrial. Nuestro equipo está comprometido con la
+                      excelencia técnica y la innovación constante.
+                    </p>
+                    <p>
+                      Hemos ganado el reconocimiento de nuestros clientes por la
+                      calidad excepcional de nuestros servicios, nuestros
+                      tiempos de respuesta eficientes y la eficiencia operativa
+                      que caracteriza cada uno de nuestros proyectos.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <Image
+                      src="/quienes_somos.jpg"
+                      alt="Quiénes Somos - IMESAC"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -248,21 +265,34 @@ export default function Empresa() {
           </div>
 
           <div className="p-8">
-            {/* Mission Statement */}
+            {/* Mission Statement con Imagen */}
             <div className="mb-12">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 mb-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Target className="w-8 h-8 text-blue-600" />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Target className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <blockquote className="text-xl text-gray-800 font-medium leading-relaxed">
+                      &ldquo;Cooperar con el éxito de nuestros clientes,
+                      desarrollando sus proyectos con calidad, seguridad, y
+                      dentro del plazo y presupuesto previstos. Impulsando el
+                      desarrollo personal y profesional de nuestra gente,
+                      formando líderes cuyos logros trasciendan en la empresa y
+                      en la sociedad.&rdquo;
+                    </blockquote>
                   </div>
-                  <blockquote className="text-xl text-gray-800 font-medium leading-relaxed">
-                    &ldquo;Cooperar con el éxito de nuestros clientes,
-                    desarrollando sus proyectos con calidad, seguridad, y dentro
-                    del plazo y presupuesto previstos. Impulsando el desarrollo
-                    personal y profesional de nuestra gente, formando líderes
-                    cuyos logros trasciendan en la empresa y en la
-                    sociedad.&rdquo;
-                  </blockquote>
+                </div>
+                <div className="order-first lg:order-last">
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <Image
+                      src="/mision.jpg"
+                      alt="Nuestra Misión - IMESAC"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -466,18 +496,31 @@ export default function Empresa() {
           </div>
 
           <div className="p-8">
-            {/* Vision Statement */}
+            {/* Vision Statement con Imagen */}
             <div className="mb-12">
-              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-8 mb-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Eye className="w-8 h-8 text-purple-600" />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                <div>
+                  <div className="relative overflow-hidden rounded-2xl">
+                    <Image
+                      src="/vision.png"
+                      alt="Nuestra Visión - IMESAC"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
-                  <blockquote className="text-xl text-gray-800 font-medium leading-relaxed">
-                    &ldquo;Ser una empresa líder a nivel nacional, a través del
-                    crecimiento sostenible para el beneficio de nuestros
-                    clientes y colaboradores&rdquo;
-                  </blockquote>
+                </div>
+                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Eye className="w-8 h-8 text-purple-600" />
+                    </div>
+                    <blockquote className="text-xl text-gray-800 font-medium leading-relaxed">
+                      &ldquo;Ser una empresa líder a nivel nacional, a través
+                      del crecimiento sostenible para el beneficio de nuestros
+                      clientes y colaboradores&rdquo;
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
